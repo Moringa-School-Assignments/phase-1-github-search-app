@@ -10,7 +10,6 @@ async function fetchData() {
 }
 function filterData(login) {
     fetchData().then((data) => {
-        // console.log(data);
         data.items.map(item => {
             if (item.login === login) {
                 return item;
@@ -25,11 +24,12 @@ function filterData(login) {
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("github-form");
     const search = document.getElementById("search");
-    let searchValue = search.value;
+    
     const user = document.getElementById("user-list");
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
+        let searchValue = String(search.value);
         let li = document.createElement("li");
         li.innerHTML = `Name ${filterData(searchValue)}`;
         user.appendChild(li);
