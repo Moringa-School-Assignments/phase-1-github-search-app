@@ -8,15 +8,15 @@ async function fetchData() {
     })
         .then(res => res.json())
 }
-function filterData(login){
+function filterData(login) {
     fetchData().then((data) => {
         // console.log(data);
         data.items.map(item => {
-            if (item.login === login){
+            if (item.login === login) {
                 return item;
             }
         })
-        
+
     })
 }
 // filterData("marimeireles");
@@ -30,14 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        console.log(search);
-        alert(searchValue)
-        // function display(){
-        //     let li = document.createElement("li");
-        //     li.innerHTML = `Name ${filterData(searchValue)}`;
-        //     user.appendChild(li);
-        // }
-        // display()
+        let li = document.createElement("li");
+        li.innerHTML = `Name ${filterData(searchValue)}`;
+        user.appendChild(li);
+
 
 
         form.reset();
